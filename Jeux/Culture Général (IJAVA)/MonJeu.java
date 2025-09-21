@@ -92,7 +92,7 @@ class MonJeu extends Program {
                 if (equals(question, "Histoire")) {
                     if (randomQuestion == 0) {
                         println("");
-                        println("Question 1 : ");
+                        println(A + " | Question 1 : ");
                         println("Réponse A | Réponse B");
                         println("Réponse C | Réponse D");
                         
