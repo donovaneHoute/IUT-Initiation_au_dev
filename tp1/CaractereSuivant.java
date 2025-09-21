@@ -5,7 +5,7 @@ class CaractereSuivant extends Program {
         char c = readChar();
 
         char suivant = (char) ((int) (c + 1)) ; // <-- À COMPLÉTER
-        println("Le caractère après " + c + " edsdqst " + suivant );
+        println("Le caractère après " + c + " est " + suivant );
     }
   
 }
