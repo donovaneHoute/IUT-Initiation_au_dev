@@ -1,1 +1,0 @@
-<p style="color: yellow;">Ceci est Test</p>
