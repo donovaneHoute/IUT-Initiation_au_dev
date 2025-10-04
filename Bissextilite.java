@@ -35,79 +35,23 @@ class Bissextilite extends Program {
         return stockage;
     }
 
-    String jourSemaine(int jour) {
-        String stockage = "Dimanche ";
-        if (jour == 1) {
-            stockage = "Lundi ";
-        } else if (jour == 2) {
-            stockage = "Mardi ";
-        } else if (jour == 3) {
-            stockage = "Mercredi ";
-        } else if (jour == 4) {
-            stockage = "Jeudi ";
-        } else if (jour == 5) {
-            stockage = "Vendredi ";
-        } else if (jour == 6) {
-            stockage = "Samedi ";
-        }
-        return stockage;
-    }
-
     String saisonAstronomique(int jour, int mois) {
         String stockage = saisonMeteorologique(mois);
-        if ((mois >= 3 && mois <=6 ) || (mois >= 6 && mois <=9) || (mois >= 9 && mois <= 12) || (mois == 12)) {
+        if ((mois >= 3 && mois <=6 ) || (mois >= 6 && mois <=9) || (mois >= 9 && mois <=12) || (mois == 12)) {
             if (jour < 21) {
                 stockage = saisonMeteorologique(mois-1);
             }
         }
         return stockage;
     }
-    String moisAnnee(int mois) {
-        String stockage = "Mois invalide";
-        if (mois == 1) {
-            stockage = "Janvier";
-        } else if (mois == 2) {
-            stockage = "Février";
-        } else if (mois == 3) {
-            stockage = "Mars";
-        } else if (mois == 4) {
-            stockage = "Avril";
-        } else if (mois == 5) {
-            stockage = "Mai";
-        } else if (mois == 6) {
-            stockage = "Juin";
-        } else if (mois == 7) {
-            stockage = "Juillet";
-        } else if (mois == 8) {
-            stockage = "Août";
-        } else if (mois == 9) {
-            stockage = "Septembre";
-        } else if (mois == 10) {
-            stockage = "Octobre";
-        } else if (mois == 11) {
-            stockage = "Novembre";
-        } else if (mois == 12) {
-            stockage = "Décembre";
-        }
-        return stockage;
-    }
 
     void algorithm () {
-        print("Année souhaitée : ");
+        print("Choisi l'année : ");
         int annee = readInt();
 
-        print("1er jour de l'année L(1), M(2), M(3), J(4), V(5), S(6) ou D(7) ? ");
-        int premierJour = readInt();
-
-        for (int mois = 0; mois <= 13; mois = mois + 1){
-            println("");
-            println(moisAnnee(mois) + " :");
-            for (int jour = 1; jour <= nombreJoursMois(mois, annee); jour = jour + 1) {
-                println("- "+ jourSemaine(premierJour) + jour + " : " + saisonAstronomique(jour, mois));        
-                premierJour++;
-                if (premierJour > 7) {
-                    premierJour = 1;
-                }
+        for (int m=0;m<=13;m=m+1){
+            for (int j=1; j<=nombreJoursMois(m, annee); j=j+1) {
+                println(j + "/" + m + " : " + saisonAstronomique(j, m));
             }
             
         }
