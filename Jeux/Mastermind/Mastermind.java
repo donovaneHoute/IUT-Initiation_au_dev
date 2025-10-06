@@ -134,8 +134,7 @@ class Mastermind extends Program {
         int choix = readInt();
 
         while (choix < 1 || choix > 3) {
-            println("\n❌ Choix invalide !");
-            print("🔁 Veuillez saisir 1, 2 ou 3 : ");
+            print("❌ Entrée invalide. Veuillez réessayer : ");
             choix = readInt();
         }
 
@@ -153,3 +152,4 @@ class Mastermind extends Program {
         start();
     }
 }
+
