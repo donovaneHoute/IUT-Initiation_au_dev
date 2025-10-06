@@ -28,7 +28,6 @@ class Mastermind extends Program {
         int essaies = 0;
         int maxEssaies = 8;
         int longueur = 4;
-
         String nombre = "";
 
         if (equals(difficulte, "Moyen")) {
@@ -40,24 +39,46 @@ class Mastermind extends Program {
         }
 
         for (int i = 0; i < longueur; i = i + 1) {
-            int chiffre = (int) (random()*10);
+            int chiffre = (int) (random() * 10);
             nombre = nombre + chiffre;
         }
 
-        println(nombre);
+        println("\n💡 (Debug) Code secret : " + nombre + "\n");
 
-    
         while (essaies < maxEssaies) {
-            println("Premier choix (exemple : 1234) : ");
+            println("────────────────────────────────────");
+            print("🔢 Entrez votre proposition (" + longueur + " chiffres) : ");
             String choix = readString();
+            int bienPlaces = 0;
+            int malPlaces = 0;
 
-            // Faire en sorte que ça dise trouvé si le chiffre est à la bonne place et pas au bonne endroit si le chiffre est dedans mais pas à la bonne place
-            if (charAt(choix, j) == charAt(nombre, j)) {
-                println("Trouvé !");
+            for (int j = 0; j < longueur; j = j + 1) {
+                if (charAt(choix, j) == charAt(nombre, j)) {
+                    bienPlaces = bienPlaces + 1;
+                } else {
+                    for (int k = 0; k < longueur; k = k + 1) {
+                        if (charAt(choix, j) == charAt(nombre, k) && k != j) {
+                            malPlaces = malPlaces + 1;
+                        }
+                    }
+                }
+            }
+
+            println("\n📊 Résultat de l’essai #" + (essaies + 1) + " :");
+            println("✔️  Bien placés  : " + bienPlaces);
+            println("⚪  Mal placés   : " + malPlaces);
+
+            if (bienPlaces == longueur) {
+                println("\n🎉 Bravo ! Vous avez trouvé la combinaison secrète !");
+                essaies = maxEssaies;
+            } else {
+                println("🔁 Essais restants : " + (maxEssaies - essaies - 1));
             }
 
             essaies = essaies + 1;
         }
+
+        println("\n💀 Fin de la partie !");
     }
     
     void regles() {
