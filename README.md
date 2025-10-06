@@ -1,13 +1,3 @@
-import { FileTree } from '@astrojs/starlight/components';
-<FileTree>
-
-- astro.config.mjs
-- package.json
-- src
-  - components
-    - Header.astro
-    - Title.astro
-  - pages/
-
-</FileTree>
-
+```bash
+tree
+```
