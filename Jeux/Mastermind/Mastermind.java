@@ -1,24 +1,27 @@
+// Auteur : Donovane Houte
 class Mastermind extends Program {
     String nouvellePartie() {
         String stockage;
 
-        println("\n====================================");
-        println("🧩  CHOIX DE LA DIFFICULTÉ");
-        println("====================================");
-        println("🔹 Facile    ➤ 4 chiffres, 8 essais");
-        println("🔸 Moyen     ➤ 6 chiffres, 10 essais");
-        println("🔺 Difficile ➤ 8 chiffres, 12 essais");
-        println("====================================\n");
+        println("\n=========================");
+        println("  CHOIX DE LA DIFFICULTÉ");
+        println("=========================\n");
 
-        print("👉 Entrez la difficulté (Facile / Moyen / Difficile) : ");
+        println("📍 Options disponibles :");
+        println("  [1] Facile    ➤ 4 chiffres, 8 essais");
+        println("  [2] Moyen     ➤ 6 chiffres, 10 essais");
+        println("  [3] Difficile ➤ 8 chiffres, 12 essais\n");
+
+        print("👉 Tapez Facile, Moyen ou Difficile pour commencer : ");
         stockage = readString();
 
         while (!equals(stockage, "Facile") && !equals(stockage, "Moyen") && !equals(stockage, "Difficile")) {
-            print("❌ Entrée invalide. Recommencez : ");
+            print("❌ Entrée invalide. Veuillez réessayer : ");
             stockage = readString();
         }
 
-        println("\n✅ Difficulté sélectionnée : " + stockage);
+        println("\n✅ Difficulté choisie : « " + stockage + " »");
+        println("──────────────────────────────");
         return stockage;
     }
 
@@ -43,12 +46,19 @@ class Mastermind extends Program {
             nombre = nombre + chiffre;
         }
 
-        println("\n💡 (Debug) Code secret : " + nombre + "\n");
+        println("\n🔒 Code secret généré. Bonne chance !" + nombre);
+        println("──────────────────────────────");
 
         while (essaies < maxEssaies) {
-            println("────────────────────────────────────");
+            println("\n🚀 Essai #" + (essaies + 1) + " / " + maxEssaies);
             print("🔢 Entrez votre proposition (" + longueur + " chiffres) : ");
             String choix = readString();
+
+            while (length(choix) != longueur) {
+                print("❌ Entrée invalide. Veuillez réessayer : ");
+                choix = readString();
+            }
+
             int bienPlaces = 0;
             int malPlaces = 0;
 
@@ -64,68 +74,82 @@ class Mastermind extends Program {
                 }
             }
 
-            println("\n📊 Résultat de l’essai #" + (essaies + 1) + " :");
-            println("✔️  Bien placés  : " + bienPlaces);
-            println("⚪  Mal placés   : " + malPlaces);
+            println("\n📊 Résultat de votre proposition :");
+            println("   ✅ Bien placés : " + bienPlaces);
+            println("   ⚪ Mal placés  : " + malPlaces);
 
             if (bienPlaces == longueur) {
-                println("\n🎉 Bravo ! Vous avez trouvé la combinaison secrète !");
+                println("\n🎉 Félicitations ! Vous avez découvert la combinaison secrète !");
                 essaies = maxEssaies;
             } else {
-                println("🔁 Essais restants : " + (maxEssaies - essaies - 1));
+                println("⏳ Essais restants : " + (maxEssaies - essaies - 1));
             }
 
             essaies = essaies + 1;
         }
 
-        println("\n💀 Fin de la partie !");
+        if (essaies == maxEssaies) {
+            println("\n💥 Vous avez épuisé vos essais...");
+            println("🔐 Le code secret était : " + nombre);
+        }
+
+        println("\n──────────── FIN DE LA PARTIE ────────────");
     }
-    
+
     void regles() {
-        println("\n📜 RÈGLES DU JEU MASTERMIND 📜");
-        println("------------------------------------");
-        println("🔹 Le but est de deviner une combinaison secrète de chiffres.");
-        println("🔹 À chaque essai, vous recevez des indices :");
-        println("   ✔️  Bon chiffre et bonne position");
-        println("   ⚪  Bon chiffre mais mauvaise position");
-        println("🔹 Vous avez un nombre limité d'essais selon la difficulté.");
-        println("🔹 Utilisez votre logique pour trouver la combinaison !");
-        println("------------------------------------\n");
+        println("\n════════════════════════════════════════");
+        println("    📜 RÈGLES DU JEU MASTERMIND 📜");
+        println("════════════════════════════════════════\n");
+
+        println("🔹 Votre objectif : deviner la combinaison secrète.");
+        println("🔹 Pour chaque proposition, vous recevrez deux indices :");
+        println("   - ✔️  Chiffres bien placés");
+        println("   - ⚪  Chiffres présents mais mal placés");
+        println("🔹 Le nombre d’essais dépend de la difficulté choisie.\n");
+
+        println("Bonne chance et amusez-vous bien ! 🎯");
+        print("Entrer 'q' pour pouvoir quitter le menu des règles : ");
+        char q = readChar();
+
+        while (q != 'q') {
+            print("❌ Entrée invalide. Veuillez réessayer : ");
+            q = readChar();
+        }
+
+        println("────────────────────────────────────────\n");
+        start();
     }
 
     void start() {
-        println("====================================");
-        println("🎮  BIENVENUE DANS LE MASTERMIND  🎮");
-        println("====================================\n");
+        println("\n🎮 ===============================");
+        println("       BIENVENUE DANS MASTERMIND");
+        println("🎮 ===============================\n");
 
-        println("Que souhaitez-vous faire ?");
-        println("------------------------------------");
-        println("1️⃣  ▶️  Lancer une nouvelle partie");
-        println("2️⃣  📜  Lire les règles du jeu");
-        println("3️⃣  ❌  Quitter le jeu");
-        println("------------------------------------\n");
+        println("Que voulez-vous faire ?");
+        println("  [1] ▶️  Nouvelle partie");
+        println("  [2] 📜  Lire les règles");
+        println("  [3] ❌  Quitter\n");
 
-        print("👉 Veuillez entrer le numéro de votre choix : ");
+        print("👉 Entrez le numéro correspondant : ");
         int choix = readInt();
 
         while (choix < 1 || choix > 3) {
-            println("\n❌ Erreur : choix invalide !");
-            print("🔁 Veuillez entrer un numéro entre 1 et 3 : ");
+            println("\n❌ Choix invalide !");
+            print("🔁 Veuillez saisir 1, 2 ou 3 : ");
             choix = readInt();
         }
 
         if (choix == 1) {
-            nouvellePartie();
+            partie();
         } else if (choix == 2) {
             regles();
         } else {
-            println("\n👋 Merci d’avoir joué. À bientôt !");
+            println("\n👋 Merci d’avoir joué ! À très vite !");
             System.exit(0);
         }
     }
 
     void algorithm() {
         start();
-        partie();
     }
 }
