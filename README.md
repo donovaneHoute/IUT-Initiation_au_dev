@@ -1,3 +1,4 @@
+import { FileTree } from '@astrojs/starlight/components';
 <FileTree>
 
 - astro.config.mjs
@@ -9,3 +10,4 @@
   - pages/
 
 </FileTree>
+
