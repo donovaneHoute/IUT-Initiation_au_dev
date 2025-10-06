@@ -23,7 +23,41 @@ class Mastermind extends Program {
     }
 
     void partie() {
-        // Faire la fonction
+        String difficulte = nouvellePartie();
+
+        int essaies = 0;
+        int maxEssaies = 8;
+        int longueur = 4;
+
+        String nombre = "";
+
+        if (equals(difficulte, "Moyen")) {
+            maxEssaies = 10;
+            longueur = 6;
+        } else if (equals(difficulte, "Difficile")) {
+            maxEssaies = 12;
+            longueur = 8;
+        }
+
+        for (int i = 0; i < longueur; i = i + 1) {
+            int chiffre = (int) (random()*10);
+            nombre = nombre + chiffre;
+        }
+
+        println(nombre);
+
+    
+        while (essaies < maxEssaies) {
+            println("Premier choix (exemple : 1234) : ");
+            String choix = readString();
+
+            // Faire en sorte que ça dise trouvé si le chiffre est à la bonne place et pas au bonne endroit si le chiffre est dedans mais pas à la bonne place
+            if (charAt(choix, j) == charAt(nombre, j)) {
+                println("Trouvé !");
+            }
+
+            essaies = essaies + 1;
+        }
     }
     
     void regles() {
@@ -71,5 +105,6 @@ class Mastermind extends Program {
 
     void algorithm() {
         start();
+        partie();
     }
 }
