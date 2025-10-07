@@ -7,7 +7,8 @@
 - 📄 **TP 03** : [Voir le PDF](https://raw.githubusercontent.com/donovaneHoute/IUT-Initiation_au_dev/main/ressources/docs/tp03.pdf)
 - 📄 **TP 04** : [Voir le PDF](https://raw.githubusercontent.com/donovaneHoute/IUT-Initiation_au_dev/main/ressources/docs/tp04.pdf)
 - 📄 **TP 05** : [Voir le PDF](https://raw.githubusercontent.com/donovaneHoute/IUT-Initiation_au_dev/main/ressources/docs/tp05.pdf)
-
+// - 📄 **TP 06** : [Voir le PDF](https://raw.githubusercontent.com/donovaneHoute/IUT-Initiation_au_dev/main/ressources/docs/tp06.pdf)
+  
 **Jeux :**
 
 - **Mastermind :** Trouver la combinaison secrète
@@ -22,4 +23,5 @@ ijava # Suivi des paramètres ci-dessous
 - start : Initialize workspace and show status
 - execute : Execute the current exercise or specified Java class
 - status : Show sessions overview (from ~/ijava2) or TP status (from ~/ijava2/tpX)
+
 
