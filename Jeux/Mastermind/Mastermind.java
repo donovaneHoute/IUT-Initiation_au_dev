@@ -25,6 +25,23 @@ class Mastermind extends Program {
         return stockage;
     }
 
+    void rejouer() {
+        print("🔄 Voulez-vous rejouer ? (o/n) : ");
+        char on = readChar();
+
+        while (on != 'o' && on != 'n') {
+            print("❌ Entrée invalide. Veuillez réessayer : ");
+            on = readChar();
+        }
+
+        if (on == 'o') {
+            println("──────────────────────────────────────────");
+            start();
+        } else if (on == 'n') {
+            System.exit(0);
+        }
+    }
+
     void partie() {
         String difficulte = nouvellePartie();
 
@@ -46,7 +63,7 @@ class Mastermind extends Program {
             nombre = nombre + chiffre;
         }
 
-        println("\n🔒 Code secret généré. Bonne chance !" + nombre);
+        println("\n🔒 Code secret généré. Bonne chance !");
         println("──────────────────────────────");
 
         while (essaies < maxEssaies) {
@@ -94,6 +111,8 @@ class Mastermind extends Program {
         }
 
         println("\n──────────── FIN DE LA PARTIE ────────────");
+
+        rejouer();
     }
 
     void regles() {
@@ -103,7 +122,7 @@ class Mastermind extends Program {
 
         println("🔹 Votre objectif : deviner la combinaison secrète.");
         println("🔹 Pour chaque proposition, vous recevrez deux indices :");
-        println("   - ✔️  Chiffres bien placés");
+        println("   - ✅  Chiffres bien placés");
         println("   - ⚪  Chiffres présents mais mal placés");
         println("🔹 Le nombre d’essais dépend de la difficulté choisie.\n");
 
