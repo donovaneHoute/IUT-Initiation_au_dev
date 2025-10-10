@@ -25,23 +25,6 @@ class Mastermind extends Program {
         return stockage;
     }
 
-    void rejouer() {
-        print("🔄 Voulez-vous rejouer ? (o/n) : ");
-        char on = readChar();
-
-        while (on != 'o' && on != 'n') {
-            print("❌ Entrée invalide. Veuillez réessayer : ");
-            on = readChar();
-        }
-
-        if (on == 'o') {
-            println("──────────────────────────────────────────");
-            start();
-        } else if (on == 'n') {
-            System.exit(0);
-        }
-    }
-
     void partie() {
         String difficulte = nouvellePartie();
 
@@ -58,12 +41,22 @@ class Mastermind extends Program {
             longueur = 8;
         }
 
-        for (int i = 0; i < longueur; i = i + 1) {
+        while (length(nombre) < longueur) {
             int chiffre = (int) (random() * 10);
-            nombre = nombre + chiffre;
+            boolean dejaPresent = false;
+
+            for (int j = 0; j < length(nombre); j = j + 1) {
+                if (charAt(nombre, j) == charAt("" + chiffre, 0)) {
+                    dejaPresent = true;
+                }
+            }
+
+            if (!dejaPresent) {
+                nombre = nombre + chiffre;
+            }
         }
 
-        println("\n🔒 Code secret généré. Bonne chance !");
+        println("\n🔒 Code secret généré. Bonne chance !" + nombre);
         println("──────────────────────────────");
 
         while (essaies < maxEssaies) {
@@ -111,8 +104,6 @@ class Mastermind extends Program {
         }
 
         println("\n──────────── FIN DE LA PARTIE ────────────");
-
-        rejouer();
     }
 
     void regles() {
@@ -122,7 +113,7 @@ class Mastermind extends Program {
 
         println("🔹 Votre objectif : deviner la combinaison secrète.");
         println("🔹 Pour chaque proposition, vous recevrez deux indices :");
-        println("   - ✅  Chiffres bien placés");
+        println("   - ✔️  Chiffres bien placés");
         println("   - ⚪  Chiffres présents mais mal placés");
         println("🔹 Le nombre d’essais dépend de la difficulté choisie.\n");
 
@@ -171,4 +162,3 @@ class Mastermind extends Program {
         start();
     }
 }
-
