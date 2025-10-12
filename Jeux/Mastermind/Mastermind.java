@@ -58,7 +58,7 @@ class Mastermind extends Program {
             longueur = 8;
         }
 
-         while (length(nombre) < longueur) {
+        while (length(nombre) < longueur) {
             int chiffre = (int) (random() * 10);
             boolean dejaPresent = false;
 
