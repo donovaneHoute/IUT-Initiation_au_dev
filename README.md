@@ -8,7 +8,6 @@
 - 📄 **TP 04** : [Voir le PDF](https://raw.githubusercontent.com/donovaneHoute/IUT-Initiation_au_dev/main/ressources/docs/tp04.pdf)
 - 📄 **TP 05** : [Voir le PDF](https://raw.githubusercontent.com/donovaneHoute/IUT-Initiation_au_dev/main/ressources/docs/tp05.pdf)
 - 📄 **TP 06** : [Voir le TP](https://github.com/donovaneHoute/IUT-Initiation_au_dev/tree/main/tp6)
-<!--- 📄 **TP 06** : [Voir le PDF](https://raw.githubusercontent.com/donovaneHoute/IUT-Initiation_au_dev/main/ressources/docs/tp06.pdf)-->
   
 **Jeux :**
 
