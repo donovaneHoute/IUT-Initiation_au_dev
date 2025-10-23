@@ -9,6 +9,7 @@
 - 📄 **TP 05** : [Voir le PDF](https://raw.githubusercontent.com/donovaneHoute/IUT-Initiation_au_dev/main/ressources/docs/tp05.pdf)
 - 📄 **TP 06** : [Voir le TP](https://github.com/donovaneHoute/IUT-Initiation_au_dev/tree/main/tp6)
 - 📄 **TP 07** : [Voir le TP](https://github.com/donovaneHoute/IUT-Initiation_au_dev/tree/main/tp7)
+- 📄 **TP 08** : [Voir le TP](https://github.com/donovaneHoute/IUT-Initiation_au_dev/tree/main/tp8)
   
 **Jeux :**
 
@@ -24,6 +25,7 @@ ijava # Suivi des paramètres ci-dessous
 - start : Initialize workspace and show status
 - execute : Execute the current exercise or specified Java class
 - status : Show sessions overview (from ~/ijava2) or TP status (from ~/ijava2/tpX)
+
 
 
 
