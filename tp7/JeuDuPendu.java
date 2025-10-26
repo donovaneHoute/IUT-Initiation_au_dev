@@ -1,5 +1,75 @@
 class JeuDuPendu extends Program {
 
+    String dessinPendu(int erreurs){
+        String[] tab={
+            """
+            +-------+
+            |
+            |
+            |
+            |
+            |
+            ==============\n
+            """,
+            """
+            +-------+
+            |       |
+            |       O
+            |
+            |
+            |
+            ==============\n
+            """
+                ,
+            """
+            +-------+
+            |       |
+            |       O
+            |       |
+            |
+            |
+            ==============\n
+            """,
+            """
+            +-------+
+            |       |
+            |       O
+            |      -|
+            |
+            |
+            ==============\n
+            """,
+            """
+            +-------+
+            |       |
+            |       O
+            |      -|-
+            |
+            |
+            ==============\n
+            """,
+            """
+            +-------+
+            |       |
+            |       O
+            |      -|-
+            |      |
+            |
+            ==============\n
+            """,
+            """
+            +-------+
+            |       |
+            |       O
+            |      -|-
+            |      | |
+            |
+            ==============\n
+            """
+        };
+        return tab[erreurs];
+    }
+
     boolean[] creerTableau(String mot) {
         boolean[] tableauResultat = new boolean[length(mot)];
 
@@ -18,19 +88,20 @@ class JeuDuPendu extends Program {
 
     void mot(String mot) {
         String resultat = "";
-        int nbErreurs = 5;
+        int nbErreurs = 0;
         boolean trouverMot;
         
         boolean[] tableauResultat = creerTableau(mot);
 
         do {
-            print("Il vous reste " + nbErreurs + " erreurs: ");
+            print("Votre proposition : ");
             
             affichage(mot, tableauResultat);
 
             println("");
             print("Entrez un caractère: ");
             char caractere = readChar();
+            println("");
 
             boolean trouve = false;
             for (int idx = 0; idx < length(mot); idx++) {
@@ -42,7 +113,8 @@ class JeuDuPendu extends Program {
 
 
             if (!trouve) {
-                nbErreurs--;
+                println(dessinPendu(nbErreurs));
+                nbErreurs++;
             }
 
             trouverMot = true;
@@ -52,7 +124,7 @@ class JeuDuPendu extends Program {
                     trouverMot = false;
                 }
             }
-        } while(nbErreurs != 0 && !trouverMot);
+        } while(nbErreurs != 7 && !trouverMot);
 
         if (nbErreurs == 0) {
             print("Vous avez perdu ! ");
@@ -63,7 +135,7 @@ class JeuDuPendu extends Program {
     }
     
     void algorithm () {
-        String mot = "unix";
+        String mot = "propagande";
 
         mot(mot);
     }
