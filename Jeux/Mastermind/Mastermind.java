@@ -1,5 +1,8 @@
 // Auteur : Donovane Houte
 class Mastermind extends Program {
+
+    // Démarre une nouvelle partie
+
     String nouvellePartie() {
         String stockage;
 
@@ -22,32 +25,13 @@ class Mastermind extends Program {
 
         println("\n✅ Difficulté choisie : « " + stockage + " »");
         println("──────────────────────────────");
+        
         return stockage;
     }
 
-    void rejouer() {
-        print("🔄 Voulez-vous rejouer ? (o/n) : ");
-        char on = readChar();
+    // Génération du code pour la partie
 
-        while (on != 'o' && on != 'n') {
-            print("❌ Entrée invalide. Veuillez réessayer : ");
-            on = readChar();
-        }
-
-        if (on == 'o') {
-            println("──────────────────────────────────────────");
-            start();
-        } else if (on == 'n') {
-            System.exit(0);
-        }
-    }
-
-    void partie() {
-        String difficulte = nouvellePartie();
-
-        int essaies = 0;
-        int maxEssaies = 8;
-        int longueur = 4;
+    String generationCode(String difficulte, int maxEssaies, int essaies, int longueur) {
         String nombre = "";
 
         if (equals(difficulte, "Moyen")) {
@@ -72,6 +56,42 @@ class Mastermind extends Program {
                 nombre = nombre + chiffre;
             }
         }
+
+        return nombre;
+    }
+
+
+
+
+    // Fonction pour pouvoir relancer une partie sans interruption
+
+    void rejouer() {
+        print("🔄 Voulez-vous rejouer ? (o/n) : ");
+        char on = readChar();
+
+        while (on != 'o' && on != 'n') {
+            print("❌ Entrée invalide. Veuillez réessayer : ");
+            on = readChar();
+        }
+
+        if (on == 'o') {
+            println("──────────────────────────────────────────");
+            start();
+        } else if (on == 'n') {
+            System.exit(0);
+        }
+    }
+
+    // Gestion de la partie
+
+    void partie() {
+        String difficulte = nouvellePartie();
+
+        int essaies = 0;
+        int maxEssaies = 8;
+        int longueur = 4;
+
+        String nombre = generationCode(difficulte, maxEssaies, essaies, longueur);
 
         println("\n🔒 Code secret généré. Bonne chance !");
         println("──────────────────────────────");
@@ -125,6 +145,8 @@ class Mastermind extends Program {
         rejouer();
     }
 
+    // Gestion des règles
+
     void regles() {
         println("\n════════════════════════════════════════");
         println("    📜 RÈGLES DU JEU MASTERMIND 📜");
@@ -132,7 +154,7 @@ class Mastermind extends Program {
 
         println("🔹 Votre objectif : deviner la combinaison secrète.");
         println("🔹 Pour chaque proposition, vous recevrez deux indices :");
-        println("   - ✅  Chiffres bien placés");
+        println("   - ✔️  Chiffres bien placés");
         println("   - ⚪  Chiffres présents mais mal placés");
         println("🔹 Le nombre d’essais dépend de la difficulté choisie.\n");
 
@@ -148,6 +170,8 @@ class Mastermind extends Program {
         println("────────────────────────────────────────\n");
         start();
     }
+
+    // Menu du début
 
     void start() {
         println("\n🎮 ===============================");
@@ -176,6 +200,9 @@ class Mastermind extends Program {
             System.exit(0);
         }
     }
+
+
+
 
     void algorithm() {
         start();
